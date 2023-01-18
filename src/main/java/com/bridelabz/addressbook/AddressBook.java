@@ -2,9 +2,8 @@ package com.bridelabz.addressbook;
 
 import java.util.*;
 
-public class AddressBook extends Contact{
+public class AddressBook extends Contact {
     ArrayList<Contact> al1 = new ArrayList();
-
     Scanner scan = new Scanner(System.in);
 
     public Contact addDetails() {
@@ -41,9 +40,6 @@ public class AddressBook extends Contact{
         System.out.print("Please Enter The Phone Number :: ");
         phoneNo = scan.nextLong();
         contact.setPhoneNo(phoneNo);
-
-        // System.out.println(obj);
-
         al1.add(contact);
         Iterator itr = al1.iterator();
         while (itr.hasNext()) {
@@ -118,12 +114,40 @@ public class AddressBook extends Contact{
                 default:
                     System.out.println("Invalid input ");
             }
-
             System.out.println("Addressbook after editing contact ");
             al1.forEach(person -> System.out.println(person));
 
         } else {
             System.out.println("Name not found ");
+        }
+    }
+
+    void print() {
+
+        Iterator itr1 = al1.iterator();
+        while (itr1.hasNext()) {
+            System.out.println(itr1.next());
+        }
+    }
+
+    void deleteContact() {
+
+        Contact contact = new Contact();
+
+        System.out.println("Enter the Contact name which you want to delete  ");
+        String name = scan.next();
+
+        for (int i = 0; i < al1.size(); i++) {
+            if (al1.get(i).getFirstname().equals(name)) {
+                // al1.remove(contact);
+                al1.remove(i);
+            }
+        }
+        System.out.println("Address book after deleting contact ");
+
+        Iterator itr1 = al1.iterator();
+        while (itr1.hasNext()) {
+            System.out.println(itr1.next());
         }
     }
 }
